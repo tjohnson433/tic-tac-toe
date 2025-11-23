@@ -7,7 +7,7 @@ public class Tile extends JButton{
 	
 	//methods
 	public void setSymbol(char s) {
-		mySymbol = 's';
+		mySymbol = s;
 		if (s == ' ') {
 			this.setText("");
 		} else {
@@ -21,3 +21,4 @@ public class Tile extends JButton{
 		return mySymbol;
 	}
 }
+
