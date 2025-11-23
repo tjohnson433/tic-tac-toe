@@ -1,3 +1,5 @@
+package ticTacToe;
+
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -41,13 +43,35 @@ public class GamePanel extends JPanel implements ActionListener {
 	
 	
 	public void checkWinner() {
-		
+	    // Check rows
+	    checkThree(0, 1, 2);
+	    checkThree(3, 4, 5);
+	    checkThree(6, 7, 8);
+	    
+	    // Check columns
+	    checkThree(0, 3, 6);
+	    checkThree(1, 4, 7);
+	    checkThree(2, 5, 8);
+	    
+	    // Check diagonals
+	    checkThree(0, 4, 8);
+	    checkThree(2, 4, 6);
+	}
+
+	private void checkThree(int a, int b, int c) {
+	    if (myTiles[a].getSymbol() == myTiles[b].getSymbol() && 
+	        myTiles[b].getSymbol() == myTiles[c].getSymbol() && 
+	        myTiles[a].getSymbol() != ' ') {
+	        System.out.println("Winner: " + myTiles[a].getSymbol());
+	    }
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("clicked");
 		Tile source = (Tile)e.getSource();
 		source.setSymbol(currentTurn);
+		checkWinner();
 		swapTurns();
 	}
 }
+
