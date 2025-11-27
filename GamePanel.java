@@ -1,11 +1,8 @@
 package ticTacToe;
 
-
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class GamePanel extends JPanel implements ActionListener {
 	
@@ -43,17 +40,17 @@ public class GamePanel extends JPanel implements ActionListener {
 	
 	
 	public void checkWinner() {
-	    // Check rows
+	    // check rows
 	    checkThree(0, 1, 2);
 	    checkThree(3, 4, 5);
 	    checkThree(6, 7, 8);
 	    
-	    // Check columns
+	    // check columns
 	    checkThree(0, 3, 6);
 	    checkThree(1, 4, 7);
 	    checkThree(2, 5, 8);
 	    
-	    // Check diagonals
+	    // check diagonal
 	    checkThree(0, 4, 8);
 	    checkThree(2, 4, 6);
 	}
@@ -68,9 +65,12 @@ public class GamePanel extends JPanel implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("clicked");
-		Tile source = (Tile)e.getSource();
+		
+		Tile source = (Tile)e.getSource();		
 		source.setSymbol(currentTurn);
+		
 		checkWinner();
+		
 		swapTurns();
 	}
 }
