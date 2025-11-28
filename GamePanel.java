@@ -28,10 +28,10 @@ public class GamePanel extends JPanel implements ActionListener {
 	}
 	
 	public void swapTurns() {
-		if (currentTurn == 'o') {
-			currentTurn = 'x';
+		if (currentTurn == 'O') {
+			currentTurn = 'X';
 		} else {
-			currentTurn = 'o';
+			currentTurn = 'O';
 		}
 		if (myListener != null) {
 			myListener.actionPerformed(new ActionEvent(this, 0, "Swap"));
@@ -67,6 +67,12 @@ public class GamePanel extends JPanel implements ActionListener {
 	
 	public char getTurn() {
 		return currentTurn;
+	}
+	
+	public void showNewPanel() {
+		if (winner == false) {
+			cardlayout.show(gamePanel, "Noughts and Crosses");
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
