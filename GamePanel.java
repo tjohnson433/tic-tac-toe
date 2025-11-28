@@ -8,7 +8,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	
 	//attributes
 	private Tile[] myTiles = new Tile[9];
-	private char currentTurn = 'x';
+	private char currentTurn = 'X';
 	private ActionListener myListener;
 	private static boolean winner = false;
 	
@@ -60,20 +60,26 @@ public class GamePanel extends JPanel implements ActionListener {
 	    if (myTiles[a].getSymbol() == myTiles[b].getSymbol() && 
 	        myTiles[b].getSymbol() == myTiles[c].getSymbol() && 
 	        myTiles[a].getSymbol() != ' ') {                                                          // are a, b and c all the same? an not just empty
+	    	winner = true;
 	        System.out.println("winner: " + myTiles[a].getSymbol());
-	        winner = true;
 	    }
+	}
+	
+	public void resetGame() {
+		currentTurn = 'X';
+		winner = false;
+		
+		for (Tile t : myTiles) {
+			t.setSymbol(' ');
+			t.setEnabled(true);
+		}
 	}
 	
 	public char getTurn() {
 		return currentTurn;
 	}
 	
-	public void showNewPanel() {
-		if (winner == false) {
-			cardlayout.show(gamePanel, "Noughts and Crosses");
-		}
-	}
+	
 	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("clicked");
