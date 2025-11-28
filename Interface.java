@@ -15,15 +15,17 @@ public class Interface extends JPanel implements ActionListener{
 	private static JPanel winPanel = new JPanel();
 	private static JLabel winLabel = new JLabel();
 	
-	
+	private static JButton resetButton  =new JButton("Reset Game");
 		
 		//constructor
 	public Interface() {
 		
 		// setting up the win panel
+		
+		
 		winLabel.setText("YOU WINNNNNNNNNNNN");
-		winLabel.setForeground(Color.white);
-		winPanel.setBackground(Color.red);
+		winLabel.setForeground(Color.black);
+		winPanel.setBackground(Color.white);
 		winPanel.add(winLabel);
 			
 		panelswitcher.add(myGamePanel, "Gamepanel");
@@ -32,24 +34,20 @@ public class Interface extends JPanel implements ActionListener{
 		this.setLayout(new BorderLayout());
 		this.add(panelswitcher, BorderLayout.CENTER);
 		this.add(myTurnLabel, BorderLayout.NORTH);
-		
-		//set up window
-		
-		
+	
 		myGamePanel.setActionListener(this);
 	}
 	
+	
+	
 	public static void showWinPanel() {
-		cardlayout.show(panelswitcher, "win");
+		cardlayout.show(panelswitcher, "Win Panel");
 		System.out.println("showWinPanel called");
 	}
 	
-	public void resetGame() {
-		
-	}
 	
 	
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
