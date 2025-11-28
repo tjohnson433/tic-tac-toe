@@ -8,7 +8,7 @@ public class Interface extends JPanel implements ActionListener{
 	
 	//attributes
 	private static JLabel myTurnLabel = new JLabel("Turn: X");
-	private static GamePanel myGamePanel = new GamePanel();
+	private static GamePanel myGamePanel = new GamePanel();                               // screen1
 		
 	private static CardLayout cardlayout = new CardLayout();
 	private static JPanel panelswitcher = new JPanel(cardlayout);
@@ -20,12 +20,14 @@ public class Interface extends JPanel implements ActionListener{
 		//constructor
 	public Interface() {
 		
-		winLabel.setText("win");
+		// setting up the win panel
+		winLabel.setText("YOU WINNNNNNNNNNNN");
+		winLabel.setForeground(Color.white);
 		winPanel.setBackground(Color.red);
-		winPanel.setVisible(true);
+		winPanel.add(winLabel);
 			
 		panelswitcher.add(myGamePanel, "Gamepanel");
-		panelswitcher.add(winPanel, winLabel);
+		panelswitcher.add(winPanel, "Win Panel");
 
 		this.setLayout(new BorderLayout());
 		this.add(panelswitcher, BorderLayout.CENTER);
@@ -39,6 +41,7 @@ public class Interface extends JPanel implements ActionListener{
 	
 	public static void showWinPanel() {
 		cardlayout.show(panelswitcher, "win");
+		System.out.println("showWinPanel called");
 	}
 	
 	public void resetGame() {
@@ -50,6 +53,6 @@ public class Interface extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		myTurnLabel.setText("turn" + myGamePanel.getTurn());
+		myTurnLabel.setText("Turn: " + myGamePanel.getTurn());
 	}
 }
